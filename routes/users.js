@@ -19,6 +19,7 @@ module.exports = router => {
         user.description = request.description
         user.maxAmount = request.maxAmount
         user.bitCoinId = (Math.random()*1000000).toFixed(0)
+        user.funds = request.funds
 
         user.save().then(user =>{
             res.send(user)

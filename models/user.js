@@ -22,6 +22,10 @@ const UserSchema = new Schema({
     bitCoinId: {
         type: Number,
         required: true
+    },
+    funds: {
+        type: Object,
+        required: true
     }
 })
 
