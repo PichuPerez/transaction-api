@@ -10,7 +10,7 @@ module.exports = router => {
         })
     })
     // Create new User
-    router.post('/users', function(req, res) {
+    router.post('/users/new', function(req, res) {
       let user = new User
       let request = req.body
 

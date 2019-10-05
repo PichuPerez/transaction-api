@@ -6,6 +6,7 @@ const controller = require('../controllers/transaction')
 module.exports = router => {
     //Get All transactions
     router.get('/transaction', (req, res) => {
+        console.log('finding transactions')
         Transaction.find().then(transactions => {
             res.send(transactions)
         }).catch(err => {
