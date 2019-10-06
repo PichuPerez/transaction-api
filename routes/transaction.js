@@ -5,7 +5,7 @@ const controller = require('../controllers/transaction')
 
 module.exports = router => {
     //Get All transactions
-    router.get('/transaction', (req, res) => {
+    router.get('/transactions', (req, res) => {
         console.log('finding transactions')
         Transaction.find().then(transactions => {
             res.send(transactions)
@@ -20,16 +20,22 @@ module.exports = router => {
         let transaction = new Transaction
 
         let amount = request.amount
-        let currency = request.currency
+        let currency = JSON.parse(request.currency)
 
         let createTransaction = false
 
+        let sourceUser = JSON.parse(request.sourceUser)
+        let targetUser = JSON.parse(request.targetUser)
+
         transaction.amount = amount
         transaction.currency = currency
-        transaction.sourceUserId = request.sourceUser._id
-        transaction.targetUserId = request.targetUser._id
-        transaction.created = Date.now().toLocaleString()
-        transaction.state = 'In process'
+
+        transaction.sourceUserId = sourceUser._id
+        transaction.sourceUserName = sourceUser.name
+        transaction.targetUserId = targetUser._id
+        transaction.targetUserName = targetUser.name
+        transaction.created = Date.now()
+        transaction.state = 'IN PROCESS'
 
         transaction.save().then(transaction => {
             controller.handleTransaction(transaction)

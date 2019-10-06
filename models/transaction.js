@@ -7,8 +7,12 @@ const TransactionSchema = new Schema({
         required: true
     },
     currency: {
-        type: String,
+        type: Object,
         required: true
+    },
+    sourceUserName:{
+       type: String,
+       required: true
     },
     sourceUserId: {
         type: String,
@@ -18,9 +22,12 @@ const TransactionSchema = new Schema({
         type: String,
         required: true
     },
+    targetUserName:{
+        type: String,
+        required: true
+    },
     created: {
-        type: Date,
-        default: Date.now()
+        type: Date
     },
     processed: {
         type: Date

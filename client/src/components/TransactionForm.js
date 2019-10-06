@@ -9,7 +9,8 @@ class TransactionForm extends Component {
             amount: '',
             targetUser: '',
             sourceUser: '',
-            currency: ''
+            currency: '',
+            succes: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.submitTransaction = this.submitTransaction.bind(this);
@@ -33,7 +34,6 @@ class TransactionForm extends Component {
         })
     }
     submitTransaction(){
-        console.log('submiting')
         let body = {
             amount: this.state.amount,
             currency: this.state.currency,
@@ -47,18 +47,19 @@ class TransactionForm extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(body)
-        })
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(myJson) {
+        }).then(function(response) {
+                let res = response.json()
+                return res
+            }).then(function(myJson) {
                 console.log(myJson);
-            });
+            })
+        this.setState({success: true})
     }
 
     render () {
         let users = this.state.users.map(user => <option value={JSON.stringify(user)}>{user.name}</option>)
         let currencies = this.state.currencies.map(currency => <option value={JSON.stringify(currency)}>{currency.name}</option>)
+        let success = (this.state.success === true) ? (<h3>Transaction Created!!</h3>) : null
         return (
             <div>
                 <form className="container mt-5">
@@ -110,6 +111,9 @@ class TransactionForm extends Component {
                         type="button"
                         className="btn btn-info btn-block col-md-8 ml-5">Create transaction</button>
                 </form>
+                <div className="container mt-5">
+                    {success}
+                </div>
             </div>
         )
     }

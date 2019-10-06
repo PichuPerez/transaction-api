@@ -1,15 +1,16 @@
 import React, {Component} from 'react'
 import TransactionForm from './components/TransactionForm'
 import Welcome from './components/Welcome'
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar"
+import TransactionsView from "./components/TransactionsView"
 
-import './App.css';
+import './App.css'
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            view: 'form'
+            view: 'transactionView'
         }
         this.handler = this.handler.bind(this)
     }
@@ -25,6 +26,8 @@ class App extends Component {
             case 'welcome': view = <Welcome />
             break
             case 'form': view = <TransactionForm />
+            break
+            case 'transactionView': view = <TransactionsView/>
         }
 
     return (
