@@ -25,7 +25,7 @@ class Navbar extends Component {
                                 <a className="nav-link" onClick={() => this.props.handler('transactionView')}>View Transactions</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" onClick={() => this.props.handler('currency')} tabIndex="-1"
+                                <a className="nav-link" onClick={() => this.props.handler('currency')}
                                    aria-disabled="true">New Currency</a>
                             </li>
                         </ul>

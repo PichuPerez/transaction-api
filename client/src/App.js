@@ -5,12 +5,13 @@ import Navbar from "./components/Navbar"
 import TransactionsView from "./components/TransactionsView"
 
 import './App.css'
+import Currency from "./components/Currency";
 
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            view: 'transactionView'
+            view: 'currency'
         }
         this.handler = this.handler.bind(this)
     }
@@ -28,6 +29,8 @@ class App extends Component {
             case 'form': view = <TransactionForm />
             break
             case 'transactionView': view = <TransactionsView/>
+            break
+            case 'currency': view = <Currency/>
         }
 
     return (

@@ -9,7 +9,7 @@ module.exports = router => {
         })
     })
 
-    router.post('/currency', (req, res) => {
+    router.post('/currency/new', (req, res) => {
         let request = req.body
         let currency = new Currency
 
