@@ -15,7 +15,7 @@ module.exports = router => {
     })
 
     //Create new transaction
-    router.post('/transaction', async (req, res) => {
+    router.post('/transaction/new', async (req, res) => {
         let request = req.body
         let transaction = new Transaction
 
@@ -26,8 +26,8 @@ module.exports = router => {
 
         transaction.amount = amount
         transaction.currency = currency
-        transaction.sourceUserId = sourceUser._id
-        transaction.targetUserId = targetUser._id
+        transaction.sourceUserId = request.sourceUser._id
+        transaction.targetUserId = request.targetUser._id
         transaction.created = Date.now().toLocaleString()
         transaction.state = 'In process'
 
